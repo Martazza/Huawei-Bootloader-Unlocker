@@ -1,5 +1,5 @@
 # Huawei Bootloader Unlocker
-After closing the official EMUI website, which allowed you to retrieve the code to unlock the bootloader of Huawei/Honor phones, here's the fastest free way to retrieve it by yourself.
+After closing the official EMUI website, which allowed to retrieve the code to unlock the bootloader of Huawei/Honor phones, here's the fastest free way to retrieve it by yourself.
 
 ### How To use it
 1. Compile the .C file
