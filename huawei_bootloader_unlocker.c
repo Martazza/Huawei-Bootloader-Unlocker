@@ -4,6 +4,7 @@
 */
 #include <signal.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #define LEN 37
 
@@ -11,13 +12,12 @@ long long base_start = 1000000000000000;
 
 void resumer(){
     printf("\n\nLast used code was: %lld", base_start);
-   return 1;
 }
 
 int main( int argc, char **argv) {
 	if ( argc > 1 ) {
-		char *base = argv[1];
-		base_start = atoll( base );
+	        char *base = argv[1];
+	        base_start = atoll( base );
 	}
     signal(SIGINT, resumer);
     char fou[LEN] = {'f', 'a', 's', 't', 'b', 'o', 'o', 't', ' ',
@@ -26,7 +26,7 @@ int main( int argc, char **argv) {
 
     while (sprintf( TOTAL, "%s%lld", fou, base_start++) && system( TOTAL ));
 
-    printf("Your unlock code is: ", base_start);
+    printf("Your unlock code is: %llu", base_start);
 
     return 1;
 }
