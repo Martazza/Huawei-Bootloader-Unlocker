@@ -20,7 +20,7 @@ int main( int argc, char **argv) {
 	        base_start = atoll( base );
 	}
     signal(SIGINT, resumer);
-    char fou[LEN] = "fastboot oem unlock "
+    char fou[LEN] = "fastboot oem unlock ";
     char TOTAL[LEN];
 
     while (sprintf( TOTAL, "%s%lld", fou, base_start++) && system( TOTAL ));
