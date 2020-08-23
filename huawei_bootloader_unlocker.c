@@ -12,6 +12,7 @@ long long base_start = 1000000000000000;
 
 void resumer(){
     printf("\n\nLast used code was: %lld", base_start);
+    exit(1);
 }
 
 int main( int argc, char **argv) {
