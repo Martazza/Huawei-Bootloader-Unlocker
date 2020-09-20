@@ -3,6 +3,10 @@ This tool let you unlock the bootloader of your Huawei / Honor Device even if th
 
 After closing the official EMUI website, which allowed to retrieve the code to unlock the bootloader of Huawei/Honor phones, here's the fastest free way to retrieve it by yourself.
 
+### TODO
+
+1. 使用[fastboot源码](https://android.googlesource.com/platform/system/core/+/eclair-release/fastboot)得到最快速度。
+
 ### How To use it
 1. Compile the .C file
     1. `gcc source.c -o exec`
