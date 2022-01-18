@@ -24,7 +24,7 @@ int main( int argc, char **argv) {
 	        base_start = atoll( base );
 	} else {
 		FILE * fp;
-		if(fp= fopen("lastcode","w")) {
+		if(fp== fopen("lastcode","w")) {
 		fscanf(fp,"%llu",&base_start);
 		fclose(fp);
 		}
