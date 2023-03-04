@@ -12,12 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Clone repository
     - uses: actions/checkout@v3
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+      
+    - name: Compile .c file
+      run: gcc huawei_bootloader_unlocker.c -o huawei_bootloader_unlocker
+      
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: huawei_bootloader_unlocker
+        path: ./huawei_bootloader_unlocker
+      
