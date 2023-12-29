@@ -23,8 +23,9 @@ int main( int argc, char **argv) {
 	        char *base = argv[1];
 	        base_start = atoll( base );
 	} else {
+		// Read from last interruption.
 		FILE * fp;
-		if(fp= fopen("lastcode","w")) {
+		if(fp= fopen("lastcode","r")) {
 		fscanf(fp,"%llu",&base_start);
 		fclose(fp);
 		}
