@@ -6,15 +6,19 @@ After closing the official EMUI website, which allowed to retrieve the code to u
 
 ### How To use it
 1. Compile the .C file
-    1. `gcc source.c -o exec`
-    2. `chmod +x exec`
+    ```
+    gcc huawei_bootloader_unlocker.c.c -o exec
+    chmod +x exec
+    ```
 2. Install Android Developer Tools
 3. Enable USB Debug on your device
 4. Enable OEM Unlock
 3. Connect your device to your computer
 4. Use ```adb reboot bootloader``` to reboot your device in bootloader mode
 5. Run the program
-    1. `./exec`
+    ```
+    ./exec
+    ```
 6. Wait
 
 ## FAQ & Troubleshooting
