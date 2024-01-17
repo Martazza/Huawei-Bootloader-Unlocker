@@ -9,7 +9,7 @@
 #define LEN 37
 
 unsigned long long base_start = 1000000000000000;
-static const char LAST_CODE_FILENAME[] = "/home/martin/Documents/Programming/Huawei-Bootloader-Unlocker/last_code";
+static const char LAST_CODE_FILENAME[] = "last_code";
 
 void save_to_disk() {
     /*
@@ -25,6 +25,7 @@ void exit_handler() {
     /*
      * This function is called when the program is terminated
      */
+    base_start -= 1;
     save_to_disk();
     exit(1);
 }
@@ -43,6 +44,8 @@ int main(int argc, char **argv) {
     }
     signal(SIGINT, exit_handler);
     signal(SIGTERM, exit_handler);
+    signal(SIGQUIT, exit_handler);
+    signal(SIGTSTP, exit_handler);
     char fou[25] = "fastboot oem unlock ";
     char TOTAL[LEN];
 
