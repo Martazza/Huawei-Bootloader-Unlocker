@@ -1,1 +1,8 @@
 /cmake-build-debug/
+.idea/
+/CMakeLists.txt
+/exec
+/get_c_version
+/get_c_version.c
+/last_code
+/lastcode_backup
