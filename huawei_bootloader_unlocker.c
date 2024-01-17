@@ -9,32 +9,52 @@
 #define LEN 37
 
 unsigned long long base_start = 1000000000000000;
+static const char LAST_CODE_FILENAME[] = "/home/martin/Documents/Programming/Huawei-Bootloader-Unlocker/last_code";
 
-void resumer(){
+void save_to_disk() {
+    /*
+     * This function saves the last used code to a file
+     */
     printf("\n\nLast used code was: %lld", base_start);
-	FILE * fp = fopen("lastcode","w");
-	fprintf(fp,"%llu",base_start);
-	fclose(fp);
+    FILE *fp = fopen(LAST_CODE_FILENAME, "w");
+    fprintf(fp, "%llu", base_start);
+    fclose(fp);
+}
+
+void exit_handler() {
+    /*
+     * This function is called when the program is terminated
+     */
+    save_to_disk();
     exit(1);
 }
 
-int main( int argc, char **argv) {
-	if ( argc > 1 ) {
-	        char *base = argv[1];
-	        base_start = atoll( base );
-	} else {
-		FILE * fp;
-		if(fp= fopen("lastcode","w")) {
-		fscanf(fp,"%llu",&base_start);
-		fclose(fp);
-		}
-	}
-    signal(SIGINT, resumer);
-	signal(SIGTERM, resumer);
-    char fou[LEN] = "fastboot oem unlock ";
+int main(int argc, char **argv) {
+    if (argc > 1) {
+        char *base = argv[1];
+        base_start = atoll(base);
+        save_to_disk();
+    } else {
+        FILE *fp = fopen(LAST_CODE_FILENAME, "rb");
+        if (fp) {
+            fscanf(fp, "%llu", &base_start);
+            fclose(fp);
+        }
+    }
+    signal(SIGINT, exit_handler);
+    signal(SIGTERM, exit_handler);
+    char fou[25] = "fastboot oem unlock ";
     char TOTAL[LEN];
 
-    while (sprintf( TOTAL, "%s%llu", fou, base_start++) && system( TOTAL ));
+    base_start -= 1;
+    do {
+        base_start++;
+        sprintf(TOTAL, "%s%llu", fou, base_start);
+        printf("Trying %s\n", TOTAL);
+        if (base_start % 5000 == 0) {
+            save_to_disk();
+        }
+    } while (system(TOTAL));
 
     printf("Your unlock code is: %llu", base_start);
 
