@@ -6,7 +6,7 @@ After closing the official EMUI website, which allowed to retrieve the code to u
 
 ### How To use it
 1. Compile the .C file
-    1. `gcc source.c -o exec`
+    1. `gcc huawei_bootloader_unlocker.c -o exec`
     2. `chmod +x exec`
 2. Install Android Developer Tools
 3. Enable USB Debug on your device
@@ -18,10 +18,13 @@ After closing the official EMUI website, which allowed to retrieve the code to u
 6. Wait
 
 ## FAQ & Troubleshooting
-**The app on Windows doesn't detect my device. What could be the issue?**
+### The app on Windows doesn't detect my device. What could be the issue?
 Windows most likely doesn't recognise your device in ADB mode. 
 Install the universal ADB drivers from [here](http://dl.adbdriver.com/upload/adbdriver.zip) then
 reboot your PC and try again.
+
+### I receive `FAILED (remote: 'invalid command')`
+Don't worry, wait until the brute force process is completed.
 
 # License
 ```
